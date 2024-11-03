@@ -10,8 +10,8 @@
         }
         table {
             width: 100%;
-            border-collapse: separate; /* Para separar filas */
-            border-spacing: 0 5px; /* Espacio entre filas */
+            border-collapse: separate;
+            border-spacing: 0 5px;
         }
         th, td {
             border: 1px solid #ccc;
@@ -19,20 +19,30 @@
             text-align: left;
         }
         tr.toggle {
-            background-color: #b3dcff; /* Color suave */
-            /*border-radius: 10px; /* Bordes redondeados en extremos */
+            background-color: #b3dcff;
         }
-        tr.toggle, td:first-child {
-            border-radius: 10px 0 0 10px; /* Bordes redondeados en la parte izquierda */
+        td:first-child, 
+        th:first-child {
+            border-radius: 10px 0 0 10px;
         }
-        tr.toggle, td:last-child {
-            border-radius: 0 10px 10px 0; /* Bordes redondeados en la parte derecha */
+        td:last-child, 
+        th:last-child {
+            border-radius: 0 10px 10px 0;
         }
         .visitas {
             display: none;
         }
         tr.visitas td {
-            background-color: #e0f7fa; /* Color para las visitas */
+            background-color: #e0f7fa;
+        }
+        .estado-abierto {
+            background-color: #c9f9c9; /* Verde claro */
+        }
+        .estado-cerrado {
+            background-color: #f9c9c9; /* Rojo claro */
+        }
+        .estado-vendido {
+            background-color: #c9d9f9; /* Azul claro */
         }
     </style>
 </head>
@@ -42,57 +52,204 @@
 <table>
     <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Teléfono</th>
+            <th>Fecha Últ. Visita</th>
+            <th>Fecha Próx. Visita</th>
+            <th>Razón Social</th>
+            <th>Localidad</th>
+            <th>Estado</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="toggle" onclick="toggleVisitas(this)">
-            <td>Juan Pérez</td>
-            <td>juan@example.com</td>
-            <td>123456789</td>
+        <tr class="toggle estado-abierto" onclick="toggleVisitas(this)">
+            <td>15-10-2024</td>
+            <td>01-11-2024</td>
+            <td>Industria Verde S.A.</td>
+            <td>Posadas</td>
+            <td>
+                <select onchange="cambiarEstado(this, this.parentElement.parentElement)">
+                    <option value="abierto">Abierto</option>
+                    <option value="cerrado">Cerrado</option>
+                    <option value="vendido">Vendido</option>
+                </select>
+            </td>
         </tr>
         <tr class="visitas">
-            <td colspan="3">
+            <td colspan="5">
                 <table>
                     <thead>
                         <tr>
                             <th>Fecha</th>
-                            <th>Descripción</th>
+                            <th>Contacto</th>
+                            <th>Teléfono</th>
+                            <th>Domicilio</th>
+                            <th>Comentario</th>
+                            <th>Presupuesto</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>01/01/2023</td>
-                            <td>Primera visita</td>
-                        </tr>
-                        <tr>
-                            <td>15/01/2023</td>
-                            <td>Seguimiento</td>
+                            <td>10-10-2024</td>
+                            <td>Juan Pérez</td>
+                            <td>1234-5678</td>
+                            <td>Calle 123, Posadas</td>
+                            <td>Interesado en producto A</td>
+                            <td><a href="#">Ver Presupuesto</a></td>
                         </tr>
                     </tbody>
                 </table>
             </td>
         </tr>
-        <tr class="toggle" onclick="toggleVisitas(this)">
-            <td>María López</td>
-            <td>maria@example.com</td>
-            <td>987654321</td>
+        <tr class="toggle estado-cerrado" onclick="toggleVisitas(this)">
+            <td>18-10-2024</td>
+            <td>05-11-2024</td>
+            <td>Alimentos Misiones S.R.L.</td>
+            <td>Oberá</td>
+            <td>
+                <select onchange="cambiarEstado(this, this.parentElement.parentElement)">
+                    <option value="abierto">Abierto</option>
+                    <option value="cerrado" selected>Cerrado</option>
+                    <option value="vendido">Vendido</option>
+                </select>
+            </td>
         </tr>
         <tr class="visitas">
-            <td colspan="3">
+            <td colspan="5">
                 <table>
                     <thead>
                         <tr>
                             <th>Fecha</th>
-                            <th>Descripción</th>
+                            <th>Contacto</th>
+                            <th>Teléfono</th>
+                            <th>Domicilio</th>
+                            <th>Comentario</th>
+                            <th>Presupuesto</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>10/01/2023</td>
-                            <td>Primera visita</td>
+                            <td>12-10-2024</td>
+                            <td>María López</td>
+                            <td>9876-5432</td>
+                            <td>Avenida 456, Oberá</td>
+                            <td>Requiere seguimiento</td>
+                            <td><a href="#">Ver Presupuesto</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr class="toggle estado-vendido" onclick="toggleVisitas(this)">
+            <td>20-10-2024</td>
+            <td>10-11-2024</td>
+            <td>Construcciones Misioneras</td>
+            <td>Puerto Iguazú</td>
+            <td>
+                <select onchange="cambiarEstado(this, this.parentElement.parentElement)">
+                    <option value="abierto">Abierto</option>
+                    <option value="cerrado">Cerrado</option>
+                    <option value="vendido" selected>Vendido</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="visitas">
+            <td colspan="5">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Contacto</th>
+                            <th>Teléfono</th>
+                            <th>Domicilio</th>
+                            <th>Comentario</th>
+                            <th>Presupuesto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>14-10-2024</td>
+                            <td>Pedro García</td>
+                            <td>1234-5678</td>
+                            <td>Calle 789, Puerto Iguazú</td>
+                            <td>Interesado en producto B</td>
+                            <td><a href="#">Ver Presupuesto</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr class="toggle estado-abierto" onclick="toggleVisitas(this)">
+            <td>22-10-2024</td>
+            <td>15-11-2024</td>
+            <td>Servicios Logísticos del Norte</td>
+            <td>El Dorado</td>
+            <td>
+                <select onchange="cambiarEstado(this, this.parentElement.parentElement)">
+                    <option value="abierto" selected>Abierto</option>
+                    <option value="cerrado">Cerrado</option>
+                    <option value="vendido">Vendido</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="visitas">
+            <td colspan="5">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Contacto</th>
+                            <th>Teléfono</th>
+                            <th>Domicilio</th>
+                            <th>Comentario</th>
+                            <th>Presupuesto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>17-10-2024</td>
+                            <td>Clara Fernández</td>
+                            <td>9876-5432</td>
+                            <td>Plaza 123, El Dorado</td>
+                            <td>Requiere cotización</td>
+                            <td><a href="#">Ver Presupuesto</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr class="toggle estado-cerrado" onclick="toggleVisitas(this)">
+            <td>25-10-2024</td>
+            <td>20-11-2024</td>
+            <td>Turismo en Misiones</td>
+            <td>Alem</td>
+            <td>
+                <select onchange="cambiarEstado(this, this.parentElement.parentElement)">
+                    <option value="abierto">Abierto</option>
+                    <option value="cerrado" selected>Cerrado</option>
+                    <option value="vendido">Vendido</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="visitas">
+            <td colspan="5">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Contacto</th>
+                            <th>Teléfono</th>
+                            <th>Domicilio</th>
+                            <th>Comentario</th>
+                            <th>Presupuesto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>22-10-2024</td>
+                            <td>Diego Torres</td>
+                            <td>4567-8901</td>
+                            <td>Calle 321, Alem</td>
+                            <td>Interesado en producto C</td>
+                            <td><a href="#">Ver Presupuesto</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -106,6 +263,17 @@
         const nextRow = row.nextElementSibling;
         if (nextRow && nextRow.classList.contains('visitas')) {
             nextRow.style.display = nextRow.style.display === 'table-row' ? 'none' : 'table-row';
+        }
+    }
+
+    function cambiarEstado(select, row) {
+        row.classList.remove('estado-abierto', 'estado-cerrado', 'estado-vendido');
+        if (select.value === 'abierto') {
+            row.classList.add('estado-abierto');
+        } else if (select.value === 'cerrado') {
+            row.classList.add('estado-cerrado');
+        } else if (select.value === 'vendido') {
+            row.classList.add('estado-vendido');
         }
     }
 </script>
