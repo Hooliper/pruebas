@@ -67,51 +67,71 @@
     <div class="slide-form" id="slide-form">
         <div class="form-container">
             <h2>Detalles del Presupuesto</h2>
-            <form id="budget-form">
-                <label for="company-name">Nombre de la Empresa</label>
-                <input type="text" id="company-name" name="company-name">
+            <div class="form-content">
+                <div class="left-column">
+                    <h3><strong>Empresa:</strong></h3>
+                    <p id="company-name">Empresa ABC</p>
     
-                <label for="contact-name">Nombre y Apellido de Contacto</label>
-                <input type="text" id="contact-name" name="contact-name">
+                    <h3><strong>Contacto:</strong></h3>
+                    <p id="contact-name">Juan Pérez</p>
     
-                <label for="phone">Teléfono</label>
-                <input type="tel" id="phone" name="phone">
+                    <h3><strong>Teléfono:</strong></h3>
+                    <p id="phone">+1 234 567 890</p>
     
-                <label for="product">Producto</label>
-                <input type="text" id="product" name="product">
+                    <h3><strong>Dirección:</strong></h3>
+                    <p id="address">Calle Ficticia 123, Ciudad</p>
     
-                <label for="budget-value">Valor del Presupuesto</label>
-                <input type="number" id="budget-value" name="budget-value" placeholder="USD">
+                    <h3><strong>Zona:</strong></h3>
+                    <p id="zone">Zona Norte</p>
+                </div>
     
-                <label for="budget-date">Fecha del Presupuesto</label>
-                <input type="date" id="budget-date" name="budget-date">
+                <div class="right-column">
+                    <h3><strong>Proveedor:</strong></h3>
+                    <p id="supplier">Proveedor XYZ</p>
     
-                <label for="expiration-date">Fecha de Vencimiento</label>
-                <input type="date" id="expiration-date" name="expiration-date">
+                    <h3><strong>Producto:</strong></h3>
+                    <p id="product">Producto ABC</p>
     
-                <label for="supplier">Proveedor</label>
-                <input type="text" id="supplier" name="supplier">
+                    <h3><strong>Valor Presupuesto:</strong></h3>
+                    <p id="budget-value">USD 5000</p>
     
-                <h3>Visitas al Cliente</h3>
-                <table id="visits-table">
-                    <thead>
-                        <tr>
-                            <th>Fecha de Visita</th>
-                            <th>Comentario</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Aquí se agregarán las visitas -->
-                    </tbody>
-                </table>
-                <button type="button" id="add-visit-btn">Agregar Visita</button>
+                    <h3><strong>Fecha Presupuesto:</strong></h3>
+                    <p id="budget-date">2024-11-23</p>
     
-                <button type="submit">Guardar</button>
-                <button type="button" id="close-form-btn">Cerrar</button>
-            </form>
+                    <h3><strong>Vencimiento:</strong></h3>
+                    <p id="expiration-date">2024-12-23</p>
+                </div>
+            </div>
+    
+            <h3>Agregar Comentario</h3>
+            <textarea id="comment-text" placeholder="Escribe un comentario..."></textarea>
+            <button type="button" id="save-comment-btn">Guardar Comentario</button>
+    
+            <h3>Comentarios Guardados</h3>
+            <table id="comments-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Comentario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se agregarán los comentarios -->
+                    <tr>
+                        <td>2024-11-23</td>
+                        <td>Reunión con el cliente, todo en orden.</td>
+                    </tr>
+                    <tr>
+                        <td>2024-11-24</td>
+                        <td>Se discutieron cambios en el presupuesto.</td>
+                    </tr>
+                </tbody>
+            </table>
+    
+            <button type="button" id="close-form-btn">Cerrar</button>
         </div>
     </div>
-
+    
 
 
     <script src="script.js"></script>

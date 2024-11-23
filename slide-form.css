@@ -2,15 +2,16 @@
 .slide-form {
     position: fixed;
     top: 0;
-    right: -400px; /* Inicialmente oculto a la derecha */
-    width: 400px;
+    right: 0px; /* Inicialmente oculto a la derecha */
+    width: 800px; /* Ampliamos el ancho del formulario */
     height: 100%;
-    background-color: #fff;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #f8f8f8; /* Fondo gris claro para todo el formulario */
+    box-shadow: -3px 0 15px rgba(0, 0, 0, 0.15); /* Sombra más suave para el formulario */
     transition: right 0.3s ease-in-out;
     z-index: 1000;
     padding: 20px;
     overflow-y: auto;
+    border-radius: 10px 0 0 10px; /* Bordes redondeados en el lado izquierdo */
 }
 
 /* Cuando se activa, el formulario se desliza */
@@ -18,46 +19,62 @@
     right: 0;
 }
 
-/* Estilos del formulario */
-.form-container h2 {
-    text-align: center;
+/* Estructura de las columnas */
+.form-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
 }
 
-form label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
+/* Columna izquierda y derecha */
+.left-column, .right-column {
+    width: 48%; /* Ajustamos para tener más espacio entre columnas */
 }
 
-form input {
+/* Estilo para los títulos y datos */
+h3 {
+    font-size: 16px;
+    margin: 8px 0;
+    font-weight: 600;
+    color: #333; /* Títulos en color gris oscuro */
+}
+
+p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #555; /* Texto en gris claro para los datos */
+    margin: 5px 0 15px;
+    background-color: #f4f4f4; /* Fondo gris suave en cada párrafo */
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* Estilo para el textarea de comentarios */
+textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 12px;
+    margin-top: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    height: 120px;
+    font-size: 16px;
+    color: #555;
+    background-color: #fafafa;
+    box-sizing: border-box;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
+/* Estilo para los botones */
 button {
-    padding: 10px;
+    padding: 12px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 20px;
     width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button[type="button"] {
@@ -66,4 +83,46 @@ button[type="button"] {
 
 button[type="submit"] {
     background-color: #4CAF50; /* Verde para el botón de guardar */
+}
+
+/* Efecto al pasar el ratón por encima de los botones */
+button:hover {
+    opacity: 0.9;
+}
+
+/* Estilo de la tabla de comentarios */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para la tabla */
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+}
+
+table th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Filas pares con fondo gris claro */
+}
+
+/* Agregar espaciado entre las filas */
+table tr {
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover en las filas */
+table tr:hover {
+    background-color: #e9e9e9;
 }
